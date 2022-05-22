@@ -8,31 +8,6 @@ public class MinMax {
         return col;
     }
 
-    /*
-    public int pickBestMove(State cBoard,int player){
-    State nBoard = new State(cBoard);
-    int[] Scores = new int[7];
-    for(int i =0;i<7;i++)  Scores[i] = -100000000;
-    for(int i =0;i<7;i++){
-        if(nBoard.isCollumFree(i)!=-1){
-            nBoard.makeMove(i+1,player);
-            Scores[i]=nBoard.pointsFunction();
-            if(i==3)Scores[i]+=4;
-            nBoard = new State(cBoard);
-        }
-    }
-    int bCol = -1;
-    int mPoints = -1000000;
-    for(int i =0;i<7;i++){
-        if(Scores[i]>mPoints){
-            mPoints=Scores[i];
-            bCol=i;
-        }
-    }
-    return bCol+1;
-
-}
-*/
 public int miniMax(State cBoard,int depth, boolean maximizingPlayer) {
     int value = 0;
     State nBoard;

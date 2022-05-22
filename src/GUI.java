@@ -48,7 +48,7 @@ public class GUI extends JFrame {
 
         if(addedRow != -1) {
             if (gameType == 1) {
-                if (count == 1/*||count==-1*/) {
+                if (count == 1) {
                     JButton buttonToUpdate = ((JButton) (cp.getComponent(columns * addedRow + col)));
                     buttonToUpdate.setIcon(iconYellow);
                     game.makeMove((row10plusCol + 1), 1);
@@ -58,7 +58,6 @@ public class GUI extends JFrame {
                     game.makeMove((row10plusCol + 1), -1);
                 }
                 count *= -1;
-                //game.printBoard(); // remove later
             }
             else {
                 if (count == 1) {
@@ -67,9 +66,6 @@ public class GUI extends JFrame {
                     game.makeMove((row10plusCol + 1), 1);
                 } else {
                     AI.miniMax(game, AiLevel, false);
-                    //System.out.print(AI.getCollumn());
-                    //System.out.print(game.isCollumFree(AI.getCollumn()));
-                    //System.out.println();
                     addedRow = game.isCollumFree(AI.getCollumn());
                     JButton buttonToUpdate = ((JButton) (cp.getComponent(columns * addedRow + AI.getCollumn())));
                     buttonToUpdate.setIcon(iconRed);
@@ -77,9 +73,7 @@ public class GUI extends JFrame {
 
                 }
                 count *= -1;
-                //game.printBoard(); // remove later
             }
-                // check for winner
                 if (game.checkGameOver()) {
                     if (game.checkForWinnerInGUI(count)&&gameType==-1) {
                         if (game.getWinner() == 1) {
@@ -129,7 +123,7 @@ public class GUI extends JFrame {
         this.columns = columns;
 
         // Prepare Icons
-        // Image path relative to the project root (i.e., bin)
+
         String imgEmptyFilename = "images/empty.png";
         URL imgURL = getClass().getClassLoader().getResource(imgEmptyFilename);
         if (imgURL != null) iconEmpty = new ImageIcon(imgURL);
